@@ -1,3 +1,7 @@
+if [ -d /opt/local ]; then
+  export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/lib/postgresql83/bin:$PATH
+fi
+
 export HISTCONTROL=erasedups
 shopt -s histappend
 
