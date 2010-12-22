@@ -1,0 +1,34 @@
+[user]
+  name = Kevin Glowacz
+  email = kevin@glowacz.info
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  interactive = auto
+[color "branch"]
+  current = green
+  local = magenta
+  remote = magenta reverse
+[color "diff"]
+  meta = white bold
+  frag = cyan bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = magenta
+  changed = green
+  untracked = cyan
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+  compression = 9
+[status]
+  submodulesummary = true
+  relativePaths = false
+[merge]
+  tool = opendiff
+[github]
+  user = kjg
+  token = <.replace github-token>
+  
