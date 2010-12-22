@@ -7,6 +7,8 @@ fi
 export HISTCONTROL=erasedups
 shopt -s histappend
 
+export P4CONFIG="$HOME/.p4config"
+
 alias gst='git status'
 alias gbst='git branch -a -v'
 alias gco='git checkout'
