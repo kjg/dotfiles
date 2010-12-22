@@ -18,6 +18,5 @@ build
 *.pbxuser
 *.perspectivev3
 
-#rake and cap caches
-.cache_rake_t
+cap caches
 .cache_cap_t
