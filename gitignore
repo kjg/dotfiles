@@ -17,3 +17,7 @@ build
 *.mode2v3
 *.pbxuser
 *.perspectivev3
+
+#rake and cap caches
+.cache_rake_t
+.cache_cap_t
