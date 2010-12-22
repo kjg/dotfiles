@@ -31,4 +31,3 @@
 [github]
   user = kjg
   token = <.replace github-token>
-  

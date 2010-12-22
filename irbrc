@@ -14,7 +14,7 @@ if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
    RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
 
   # Display the RAILS ENV in the prompt
-  # ie : [Development]>> 
+  # ie : [Development]>>
   IRB.conf[:PROMPT][:CUSTOM] = {
    :PROMPT_N => "[#{ENV["RAILS_ENV"].capitalize}]>> ",
    :PROMPT_I => "[#{ENV["RAILS_ENV"].capitalize}]>> ",
