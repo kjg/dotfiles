@@ -28,8 +28,12 @@ if [ -f /opt/local/etc/bash_completion ]; then
   . /opt/local/etc/bash_completion
 fi
 
-if [ -f ~/.rake_cap_bash_autocomplete.sh ]; then
-  source ~/.rake_cap_bash_autocomplete.sh
+if [ -f ~/.cap_bash_autocomplete.sh ]; then
+  source ~/.cap_bash_autocomplete.sh
+fi
+
+if [ -f ~/.completion-rake ]; then
+  source ~/.completion-rake
 fi
 
 PS1="\n-- [ \u @ \h \w ] \[\033[0;32m\]\$(vcprompt)\[\033[0m\][\D{%a, %b %d %T}]\n-- $ "
