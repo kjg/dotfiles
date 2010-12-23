@@ -44,6 +44,8 @@ if [ -f ~/.completion-rake ]; then
   source ~/.completion-rake
 fi
 
+complete -o default -o nospace -F _git_checkout gco
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 PS1="\n-- [ \u @ \h \w ] \[\033[0;32m\]\$(vcprompt)\[\033[0m\][\D{%a, %b %d %T}]\n-- $ "
