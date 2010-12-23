@@ -19,10 +19,10 @@ if rails_env
   # Display the RAILS ENV in the prompt
   # ie : [Development]>>
   IRB.conf[:PROMPT][:CUSTOM] = {
-   :PROMPT_N => "[#{rails_env.capitalize}]>> ",
-   :PROMPT_I => "[#{rails_env.capitalize}]>> ",
+   :PROMPT_N => "[#{rails_env.capitalize}:%03n:%i]>>  ",
+   :PROMPT_I => "[#{rails_env.capitalize}:%03n:%i]>> ",
    :PROMPT_S => nil,
-   :PROMPT_C => "?> ",
+   :PROMPT_C => "%03n:%i?> ",
    :RETURN => "=> %s\n"
    }
   # Set default prompt
