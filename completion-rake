@@ -65,7 +65,7 @@ __rake() {
     fi
   esac
 
-  __rake_remove_namespaces
+  #__rake_remove_namespaces
 
   # append a space to all options...
   COMPREPLY=("${COMPREPLY[@]/%/ }")
