@@ -66,7 +66,7 @@ else
 fi
 
 if which rvm-prompt &> /dev/null; then
-  rvmprompt="$C[\$(rvm-prompt)]$NONE "
+  rvmprompt="$C[\$(rvm-prompt s u p g)]$NONE "
 else
   rvmprompt=""
 fi
