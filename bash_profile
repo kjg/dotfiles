@@ -48,4 +48,27 @@ complete -o default -o nospace -F _git_checkout gco
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-PS1="\n-- [ \u @ \h \w ] \[\033[0;32m\]\$(vcprompt)\[\033[0m\][\D{%a, %b %d %T}]\n-- $ "
+NONE="\[\033[0m\]"    # unsets color to term's fg color
+# regular colors
+K="\[\033[0;30m\]"    # black
+R="\[\033[0;31m\]"    # red
+G="\[\033[0;32m\]"    # green
+Y="\[\033[0;33m\]"    # yellow
+B="\[\033[0;34m\]"    # blue
+M="\[\033[0;35m\]"    # magenta
+C="\[\033[0;36m\]"    # cyan
+W="\[\033[0;37m\]"    # white
+
+if which vcprompt &> /dev/null; then
+  vcprompt="$G\$(vcprompt)$NONE"
+else
+  vcprompt=""
+fi
+
+if which rvm-prompt &> /dev/null; then
+  rvmprompt="$C[\$(rvm-prompt)]$NONE "
+else
+  rvmprompt=""
+fi
+
+PS1="\n-- [ \u @ \h \w ] $vcprompt$rvmprompt[\D{%a, %b %d %T}]\n-- $ "
