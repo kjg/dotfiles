@@ -31,7 +31,7 @@ if rails_env
     elsif defined?(RAILS_ROOT)
       promt_prefix = File.basename(RAILS_ROOT).capitalize
     else
-      File.basename(Dir.pwd).capitalize
+      promt_prefix = File.basename(Dir.pwd).capitalize
     end
 
     promt_prefix << ":#{rails_env.capitalize}"
