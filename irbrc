@@ -9,13 +9,13 @@ rescue LoadError => err
   warn "Couldn't load Wirble: #{err}"
 end
 
-def set_custom_prompt(promt_prefix = File.basename(Dir.pwd))
+def set_custom_prompt(prompt_prefix = File.basename(Dir.pwd))
   ruby_version = "#{RUBY_ENGINE}-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
   IRB.conf[:PROMPT][:CUSTOM] = {
-   :PROMPT_N => "[ #{ruby_version} ][ #{promt_prefix}:%03n:%i ] >>  ",
-   :PROMPT_I => "[ #{ruby_version} ][ #{promt_prefix}:%03n:%i ] >> ",
-   :PROMPT_S => "[ #{ruby_version} ][ #{promt_prefix}:%03n:%i ]%l>? ",
-   :PROMPT_C => "[ #{ruby_version} ][ #{promt_prefix}:%03n:%i ] >? ",
+   :PROMPT_N => "[ #{ruby_version} ][ #{prompt_prefix}:%03n:%i ] >>  ",
+   :PROMPT_I => "[ #{ruby_version} ][ #{prompt_prefix}:%03n:%i ] >> ",
+   :PROMPT_S => "[ #{ruby_version} ][ #{prompt_prefix}:%03n:%i ]%l>? ",
+   :PROMPT_C => "[ #{ruby_version} ][ #{prompt_prefix}:%03n:%i ] >? ",
    :RETURN => "=> %s\n"
    }
 
@@ -27,17 +27,17 @@ if rails_env
   # do all this after Rails is loaded
   IRB.conf[:IRB_RC] = Proc.new do |context|
     if defined?(Rails) && defined?(Rails.application)
-      promt_prefix = Rails.application.class.to_s.split("::").first
+      prompt_prefix = Rails.application.class.to_s.split("::").first
     elsif defined?(RAILS_ROOT)
-      promt_prefix = File.basename(RAILS_ROOT).capitalize
+      prompt_prefix = File.basename(RAILS_ROOT).capitalize
     else
-      promt_prefix = File.basename(Dir.pwd).capitalize
+      prompt_prefix = File.basename(Dir.pwd).capitalize
     end
 
-    promt_prefix << ":#{rails_env.capitalize}"
+    prompt_prefix << ":#{rails_env.capitalize}"
 
     ActiveRecord::Base.logger = Logger.new(STDOUT)
-    context.prompt_mode = set_custom_prompt(promt_prefix)
+    context.prompt_mode = set_custom_prompt(prompt_prefix)
   end
 end
 
