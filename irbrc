@@ -10,7 +10,7 @@ rescue LoadError => err
 end
 
 def set_custom_prompt(prompt_prefix = File.basename(Dir.pwd))
-  ruby_version = "#{RUBY_ENGINE}-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+  ruby_version = "#{RUBY_ENGINE rescue 'ruby'}-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
   IRB.conf[:PROMPT][:CUSTOM] = {
    :PROMPT_N => "[ #{ruby_version} ][ #{prompt_prefix}:%03n:%i ] >>  ",
    :PROMPT_I => "[ #{ruby_version} ][ #{prompt_prefix}:%03n:%i ] >> ",
