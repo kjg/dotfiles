@@ -48,6 +48,8 @@ complete -o default -o nospace -F _git_checkout gco
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+
 NONE="\[\033[0m\]"    # unsets color to term's fg color
 # regular colors
 K="\[\033[0;30m\]"    # black
