@@ -4,7 +4,7 @@ require 'irb/completion'
 begin
   require 'wirble'
 
-  Wirble.init
+  Wirble.init({:skip_history => true})
   Wirble.colorize
 rescue LoadError => err
   warn "Couldn't load Wirble: #{err}"
