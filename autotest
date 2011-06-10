@@ -1,0 +1,19 @@
+require 'autotest/restart'
+require 'autotest/timestamp'
+
+begin
+  require 'autotest/growl'
+  Autotest::Growl::sticky_failure_notifications = true
+  Autotest::Growl::clear_terminal = false
+rescue LoadError => err
+  warn "Couldn't load autotest/growl: #{err}"
+end
+
+
+Autotest.add_hook :initialize do |autotest|
+  %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|
+    autotest.add_exception(exception)
+  end
+end
+
+
