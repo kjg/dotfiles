@@ -1,5 +1,6 @@
 require 'autotest/restart'
 require 'autotest/timestamp'
+require 'autotest/bundler'
 
 begin
   require 'autotest/growl'
