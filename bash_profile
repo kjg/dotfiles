@@ -61,16 +61,32 @@ M="\[\033[0;35m\]"    # magenta
 C="\[\033[0;36m\]"    # cyan
 W="\[\033[0;37m\]"    # white
 
-if which vcprompt &> /dev/null; then
-  vcprompt="$G\$(vcprompt)$NONE"
-else
-  vcprompt=""
-fi
+ps1_vcprompt()
+{
+  if command -v vcprompt >/dev/null 2>&1 ; then
+    printf "%s" "$G\$(vcprompt)$NONE"
+  fi
+}
 
-if which rvm-prompt &> /dev/null; then
-  rvmprompt="$C[\$(rvm-prompt s u p g)]$NONE "
-else
-  rvmprompt=""
-fi
+ps1_rvmprompt()
+{
+  if command -v rvm-prompt &> /dev/null 2>&1 ; then
+    printf "%s" "$C[\$(rvm-prompt s u p g)]$NONE "
+  fi
+}
 
-PS1="\n-- [ \u @ \h \w ] $vcprompt$rvmprompt[\D{%a, %b %d %T}]\n-- $ "
+ps1_identity()
+{
+  if [[ $UID -eq 0 ]]  ; then
+    printf "%s" "$R\u$NONE@$C\h$M:\w$NONE"
+  else
+    printf "%s" "$G\u$NONE@$C\h$M:\w$NONE"
+  fi
+}
+
+ps1_update()
+{
+  PS1="\n-- [$(ps1_identity)] $(ps1_vcprompt)$(ps1_rvmprompt)[\D{%a, %b %d %T}]\n-- $ "
+}
+
+PROMPT_COMMAND="ps1_update $@"
