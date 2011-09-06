@@ -102,7 +102,7 @@ ps1_vcprompt()
 ps1_rvmprompt()
 {
   if command -v rvm-prompt &> /dev/null 2>&1 ; then
-    printf "%s" "$C[\$(rvm-prompt s u p g)]$NONE "
+    printf "%s" "$C[\$(rvm-prompt u p g s)]$NONE "
   fi
 }
 
