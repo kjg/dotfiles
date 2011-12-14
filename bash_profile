@@ -121,3 +121,5 @@ ps1_update()
 }
 
 PROMPT_COMMAND="ps1_update $@"
+
+[[ -s "$HOME/.bash_profile_local" ]] && source "$HOME/.bash_profile_local"
