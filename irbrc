@@ -1,3 +1,7 @@
+if defined?(::Bundler)
+  $LOAD_PATH.concat Dir.glob("#{ENV['rvm_path']}/gems/#{ENV['rvm_ruby_string']}@global/gems/*/lib")
+end
+
 require 'rubygems'
 require 'irb/completion'
 
