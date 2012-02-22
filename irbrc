@@ -6,12 +6,13 @@ require 'rubygems'
 require 'irb/completion'
 
 begin
-  require 'wirble'
-
-  Wirble.init({:skip_history => true})
-  Wirble.colorize
+  require 'brice'
+  Brice.init { |config|
+    config.exclude(:added_methods)
+    config.exclude(:history) if ENV["rvm_path"]
+  }
 rescue LoadError => err
-  warn "Couldn't load Wirble: #{err}"
+  warn "Couldn't load Brice: #{err}"
 end
 
 def set_custom_prompt(prompt_prefix = File.basename(Dir.pwd))
