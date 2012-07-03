@@ -124,6 +124,6 @@ ps1_update()
   PS1="\n-- [$(ps1_identity)] $(ps1_vcprompt)$(ps1_rvmprompt)[\D{%a, %b %d %T}]\n-- $ "
 }
 
-PROMPT_COMMAND="ps1_update $@"
+PROMPT_COMMAND="ps1_update $@;$PROMPT_COMMAND"
 
 [[ -s "$HOME/.bash_profile_local" ]] && source "$HOME/.bash_profile_local"
