@@ -28,6 +28,8 @@ alias stash-patch='git stash show -p'
 
 alias scpr='rsync --partial --progress --rsh=ssh'
 
+alias screensaver='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
+
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
