@@ -1,5 +1,5 @@
 # Omit .tm_properties so it doesn't show in the browser.
-include             = ".htaccess"
+include             = "{*,.htaccess}"
 # Exclude old *.tmproj files.
 exclude             = "{$exclude,*.tmproj}"
 
