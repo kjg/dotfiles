@@ -101,7 +101,7 @@ W="\[\033[0;37m\]"    # white
 ps1_vcprompt()
 {
   if command -v vcprompt >/dev/null 2>&1 ; then
-    printf "%s" "$G\$(vcprompt -f \"[%n:%b%m%u] \")$NONE"
+    printf "%s" "$G\$(vcprompt -t 5 -f \"[%n:%b%m%u] \")$NONE"
   fi
 }
 
