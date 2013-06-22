@@ -31,3 +31,9 @@
 [github]
   user = kjg
   token = <.replace github-token>
+[help]
+  autocorrect = 5
+[diff]
+  mnemonicprefix = yes
+[push]
+  default = upstream
