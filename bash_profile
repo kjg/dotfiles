@@ -82,7 +82,11 @@ function $function_name {
 make-completion-wrapper _git _gco git checkout
 complete -o default -o nospace -F _gco gco
 
-
+flushdns()
+{
+  sudo dscacheutil -flushcache
+  sudo killall -HUP mDNSResponder
+}
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
