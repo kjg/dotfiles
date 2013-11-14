@@ -42,7 +42,7 @@ if rails_env
 
     prompt_prefix << ":#{rails_env.capitalize}"
 
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveRecord::Base.logger = Logger.new(STDOUT) if defined?(ActiveRecord::Base)
     context.prompt_mode = set_custom_prompt(prompt_prefix)
   end
 end
