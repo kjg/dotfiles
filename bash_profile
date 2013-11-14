@@ -29,6 +29,7 @@ alias stash-patch='git stash show -p'
 alias scpr='rsync --partial --progress --rsh=ssh'
 
 alias screensaver='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
+alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
 
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
