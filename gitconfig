@@ -37,5 +37,8 @@
   mnemonicprefix = yes
 [push]
   default = upstream
+[alias]
+  pr  = "!f() { remote=${2:-$(git remote|head -1)}; git fetch -fu $remote refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+  pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 [rerere]
 	enabled = true
