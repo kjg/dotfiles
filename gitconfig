@@ -31,6 +31,8 @@
 [github]
   user = kjg
   token = <.replace github-token>
+[credential]
+	helper = osxkeychain
 [help]
   autocorrect = 5
 [diff]
