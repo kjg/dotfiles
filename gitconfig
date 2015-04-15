@@ -37,3 +37,5 @@
   mnemonicprefix = yes
 [push]
   default = upstream
+[rerere]
+	enabled = true
