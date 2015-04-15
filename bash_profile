@@ -7,7 +7,7 @@ fi
 export HISTCONTROL=erasedups
 shopt -s histappend
 
-export P4CONFIG="$HOME/.p4config"
+export BASH_IT=$HOME/.bash_it
 
 alias gst='git status'
 alias gbst='git branch -a -v'
@@ -88,9 +88,14 @@ flushdns()
   sudo killall -HUP mDNSResponder
 }
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+if [ -s "/usr/local/share/chruby/chruby.sh" ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+else
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+  [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+fi
 
 NONE="\[\033[0m\]"    # unsets color to term's fg color
 # regular colors
@@ -106,14 +111,18 @@ W="\[\033[0;37m\]"    # white
 ps1_vcprompt()
 {
   if command -v vcprompt >/dev/null 2>&1 ; then
-    printf "%s" "$G\$(vcprompt -t 5 -f \"[%n:%b%m%u] \")$NONE"
+    printf "%s" "$G\$(vcprompt -f \"[%n:%b%m%u] \")$NONE"
   fi
 }
 
-ps1_rvmprompt()
+ps1_ruby_version()
 {
   if command -v rvm-prompt &> /dev/null 2>&1 ; then
     printf "%s" "$C[\$(rvm-prompt u p g s)]$NONE "
+  else
+    if [ -n "$RUBY_ROOT" ]; then
+      printf "%s" "$C[\$(basename $RUBY_ROOT)]$NONE "
+    fi
   fi
 }
 
@@ -128,9 +137,10 @@ ps1_identity()
 
 ps1_update()
 {
-  PS1="\n-- [$(ps1_identity)] $(ps1_vcprompt)$(ps1_rvmprompt)[\D{%a, %b %d %T}]\n-- $ "
+  PS1="\n-- [$(ps1_identity)] $(ps1_vcprompt)$(ps1_ruby_version)[\D{%a, %b %d %T}]\n-- $ "
 }
 
 PROMPT_COMMAND="ps1_update $@;$PROMPT_COMMAND"
 
 [[ -s "$HOME/.bash_profile_local" ]] && source "$HOME/.bash_profile_local"
+[[ -s "$BASH_IT/bash_it.sh" ]] && source $BASH_IT/bash_it.sh
