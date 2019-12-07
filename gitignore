@@ -20,3 +20,6 @@ build
 
 cap caches
 .cache_cap_t
+
+# irb history
+.irb-history

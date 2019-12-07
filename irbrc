@@ -4,16 +4,16 @@ end
 
 require 'rubygems'
 require 'irb/completion'
+require 'irb/ext/save-history'
 
-begin
-  require 'brice'
-  Brice.init { |config|
-    config.exclude(:added_methods)
-    config.exclude(:history) if ENV["rvm_path"]
-  }
-rescue LoadError => err
-  warn "Couldn't load Brice: #{err}"
+IRB.conf[:SAVE_HISTORY] = 1000
+
+if defined?(::Rails)
+  IRB.conf[:HISTORY_FILE] = File.join(ENV['PWD'], '.irb-history')
+else
+  IRB.conf[:HISTORY_FILE] = File.join(ENV['HOME'], '.irb-history')
 end
+
 
 def set_custom_prompt(prompt_prefix = File.basename(Dir.pwd))
   ruby_version = "#{RUBY_ENGINE rescue 'ruby'}-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
