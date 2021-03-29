@@ -1,9 +1,5 @@
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
-if [ -d /opt/local ]; then
-  export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/lib/postgresql83/bin:$PATH
-fi
-
 export HISTCONTROL=erasedups
 shopt -s histappend
 
@@ -50,6 +46,8 @@ fi
 if [ -f ~/.completion-rake ]; then
   source ~/.completion-rake
 fi
+
+[ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
 # Author.: Ole J
 # Date...: 23.03.2008
