@@ -39,8 +39,8 @@ if (which brew &> /dev/null) && [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-if [ -f ~/.cap_bash_autocomplete.sh ]; then
-  source ~/.cap_bash_autocomplete.sh
+if [ -f ~/.cap_bash_autocomplete ]; then
+  source ~/.cap_bash_autocomplete
 fi
 
 if [ -f ~/.completion-rake ]; then

@@ -1,0 +1,38 @@
+#!/bin/sh
+# Install all dotfiles into the home directory
+
+SCRIPTDIR=$(dirname $0)
+cd $SCRIPTDIR/..
+DOTFILESDIR=$(pwd -P)
+
+VSCODE="$HOME/Library/Application Support/Code/User"
+
+for DOTFILE in *; do
+  HOMEFILE="$HOME/.$DOTFILE"
+  [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
+  DIRFILE="$DOTFILESDIR/$DOTFILE"
+
+  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
+  echo $DOTFILE | grep -q 'vscode-settings' &&
+       HOMEFILE="$VSCODE/settings.json" &&
+       mkdir -p "$VSCODE"
+
+  echo $DOTFILE | grep -q '\.sh' &&
+       HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
+
+  if echo $DOTFILE | grep -q 'rubocop-github.yml'
+  then
+    HOMEFILE="$HOME/GitHub/.rubocop.yml"
+  elif echo $DOTFILE | grep -q 'rubocop-oss.yml'
+  then
+    HOMEFILE="$HOME/OSS/.rubocop.yml"
+  fi
+
+  if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
+  then
+    ln -sfv "$DIRFILE" "$HOMEFILE"
+  else
+    # rm -rv "$HOMEFILE" 2>/dev/null
+    ln -sv "$DIRFILE" "$HOMEFILE"
+  fi
+done
