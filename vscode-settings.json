@@ -1,0 +1,37 @@
+{
+    "editor.fontFamily": "PragmataPro, Inconsolata-dz, Menlo, Monaco, 'Courier New', monospace",
+    "editor.renderWhitespace": "all",
+    "workbench.colorTheme": "Monokai Dimmed",
+    "window.zoomLevel": 1,
+    "[javascript]": {},
+    "html.format.indentInnerHtml": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.tabSize": 2,
+    "files.trimTrailingWhitespace": true,
+    "ruby.intellisense": "rubyLocate",
+    "ruby.codeCompletion": "rcodetools",
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "external": true,
+        "args": [
+            "serve"
+        ]
+    },
+    "spellright.documentTypes": [
+
+        "markdown",
+        "latex",
+        "plaintext",
+        "git-commit"
+    ],
+    "ruby.useLanguageServer": true
+}
