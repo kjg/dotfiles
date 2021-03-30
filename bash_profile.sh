@@ -52,6 +52,7 @@ fi
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
 _completion_loader git
+__git_complete git __git_main
 __git_complete gco _git_checkout
 
 
