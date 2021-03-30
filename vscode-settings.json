@@ -25,12 +25,15 @@
             "serve"
         ]
     },
+    "spellright.language": [
+        "en"
+    ],
     "spellright.documentTypes": [
-
         "markdown",
         "latex",
         "plaintext",
-        "git-commit"
+        "git-commit",
+        "ruby"
     ],
     "ruby.useLanguageServer": true
 }
