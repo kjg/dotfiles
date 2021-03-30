@@ -12,7 +12,7 @@ for DOTFILE in *; do
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
+  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$|\.terminal$)' && continue
   echo $DOTFILE | grep -q 'vscode-settings' &&
        HOMEFILE="$VSCODE/settings.json" &&
        mkdir -p "$VSCODE"
