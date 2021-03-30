@@ -2,7 +2,6 @@
     "editor.fontFamily": "PragmataPro, Inconsolata-dz, Menlo, Monaco, 'Courier New', monospace",
     "editor.renderWhitespace": "all",
     "workbench.colorTheme": "Monokai Dimmed",
-    "window.zoomLevel": 1,
     "[javascript]": {},
     "html.format.indentInnerHtml": true,
     "files.insertFinalNewline": true,
