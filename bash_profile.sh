@@ -62,6 +62,15 @@ flushdns()
   sudo killall -HUP mDNSResponder
 }
 
+quiet_which() {
+  command -v "$1" >/dev/null
+}
+
+if quiet_which code
+then
+  export EDITOR="code --wait --new-window"
+fi
+
 if [ -s "/usr/local/share/chruby/chruby.sh" ]; then
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
