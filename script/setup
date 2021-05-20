@@ -1,11 +1,28 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
 
-SCRIPTDIR=$(dirname $0)
+# if this file is a symlink, get the real path
+if [ -L "$0" ]
+then
+  SCRIPTSETUP="$(readlink "$0")"
+else
+  SCRIPTSETUP="$0"
+fi
+
+SCRIPTDIR=$(dirname $SCRIPTSETUP)
 cd $SCRIPTDIR/..
 DOTFILESDIR=$(pwd -P)
 
-VSCODE="$HOME/Library/Application Support/Code/User"
+[ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
+[ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
+
+if [ $MACOS ]
+then
+  VSCODE="$HOME/Library/Application Support/Code/User"
+elif [ $LINUX ]
+then
+  VSCODE="$HOME/.config/Code/User"
+fi
 
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
