@@ -74,6 +74,8 @@ fi
 if [ -s "/usr/local/share/chruby/chruby.sh" ]; then
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
+elif quiet_which rbenv; then
+  eval "$(rbenv init -)"
 else
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -105,6 +107,10 @@ ps1_ruby_version()
   else
     if [ -n "$RUBY_ROOT" ]; then
       printf "%s" "$C[\$(basename $RUBY_ROOT)]$NONE "
+    elif quiet_which rbenv && rbenv version-name &>/dev/null; then
+      if [ $(rbenv version-name) != "system" ]; then
+        printf "%s" "$C[ruby-\$(rbenv version-name)]$NONE "
+      fi
     fi
   fi
 }
