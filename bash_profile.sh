@@ -124,12 +124,24 @@ ps1_identity()
   fi
 }
 
+ps1_dashes()
+{
+  if [[ $XIT -ne 0 ]] ; then
+    printf "%s" "$R"
+  fi
+  printf "%s" "--"
+  printf "%s" "$NONE"
+}
+
 ps1_update()
 {
-  PS1="\n-- [$(ps1_identity)] $(ps1_vcprompt)$(ps1_ruby_version)[\D{%a, %b %d %T}]\n-- $ "
+  export XIT=$?
+  PS1="\n$(ps1_dashes) [$(ps1_identity)] $(ps1_vcprompt)$(ps1_ruby_version)[\D{%a, %b %d %T}]\n$(ps1_dashes) $ "
 }
 
 PROMPT_COMMAND="ps1_update $@;$PROMPT_COMMAND"
 
 [[ -s "$HOME/.bash_profile_local" ]] && source "$HOME/.bash_profile_local"
 [[ -s "$BASH_IT/bash_it.sh" ]] && source $BASH_IT/bash_it.sh
+
+true # make last command a success
