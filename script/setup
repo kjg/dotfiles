@@ -26,7 +26,7 @@ fi
 
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
-  [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
+  [ -d "$DOTFILE" ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
   echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$|\.terminal$)' && continue
@@ -49,7 +49,7 @@ for DOTFILE in *; do
   then
     ln -sfv "$DIRFILE" "$HOMEFILE"
   else
-    # rm -rv "$HOMEFILE" 2>/dev/null
+    mv "$HOMEFILE" "$HOMEFILE.bak"
     ln -sv "$DIRFILE" "$HOMEFILE"
   fi
 done
