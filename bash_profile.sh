@@ -49,9 +49,9 @@ fi
 
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
-_completion_loader git
-__git_complete git __git_main
-__git_complete gco _git_checkout
+command -v _completion_loader > /dev/null  && _completion_loader git
+command -v __git_complete > /dev/null && __git_complete git __git_main
+command -v __git_complete > /dev/null && __git_complete gco _git_checkout
 
 
 flushdns()
