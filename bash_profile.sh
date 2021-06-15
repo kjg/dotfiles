@@ -94,7 +94,23 @@ W="\[\033[0;37m\]"    # white
 ps1_vcprompt()
 {
   if command -v vcprompt >/dev/null 2>&1 ; then
-    printf "%s" "$G\$(vcprompt -f \"[%n:%b%m%u] \")$NONE"
+    local prompt=$(vcprompt -f [%n:%b%m%u] \")
+  else
+    local gitbranch='`\
+        export BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); \
+        if [ "${BRANCH}" = "HEAD" ]; then \
+            export BRANCH=$(git describe --contains --all HEAD 2>/dev/null); \
+        fi; \
+        if [ "${BRANCH}" != "" ]; then \
+            echo -n "${BRANCH}" \
+            && if git ls-files --error-unmatch -m --directory --no-empty-directory -o --exclude-standard ":/*" > /dev/null 2>&1; then \
+                    echo -n "?"; \
+            fi
+        fi`'
+    local prompt="[git:$gitbranch]"
+  fi
+  if [ ! -z "$prompt" ]; then
+    printf "%s" "$G$prompt$NONE "
   fi
 }
 
