@@ -1,7 +1,6 @@
 {
     "editor.fontFamily": "PragmataPro, Inconsolata-dz, Menlo, Monaco, 'Courier New', monospace",
     "editor.renderWhitespace": "all",
-    "workbench.colorTheme": "Monokai Dimmed",
     "[javascript]": {},
     "html.format.indentInnerHtml": true,
     "files.insertFinalNewline": true,
@@ -35,5 +34,18 @@
         "git-commit",
         "ruby"
     ],
-    "ruby.useLanguageServer": true
+    "ruby.useLanguageServer": true,
+    "editor.inlineSuggest.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": false,
+        "markdown": true,
+        "ruby": true
+    },
+    "workbench.preferredDarkColorTheme": "Monokai Dimmed",
+    "workbench.colorTheme": "Monokai Dimmed",
+    "terminal.integrated.scrollback": 100000,
+    "window.zoomLevel": 1
 }
