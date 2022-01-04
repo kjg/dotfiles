@@ -38,6 +38,7 @@ if (which brew &> /dev/null) && [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git
 
 if [ -f ~/.cap_bash_autocomplete ]; then
   source ~/.cap_bash_autocomplete
@@ -49,8 +50,8 @@ fi
 
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
-command -v _completion_loader > /dev/null  && _completion_loader git
-command -v __git_complete > /dev/null && __git_complete git __git_main
+# command -v _completion_loader > /dev/null  && _completion_loader git
+# command -v __git_complete > /dev/null && __git_complete git __git_main
 command -v __git_complete > /dev/null && __git_complete gco _git_checkout
 
 
