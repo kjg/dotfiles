@@ -157,7 +157,7 @@ ps1_update()
   export XIT=$?
 }
 
-PS1="\n\$(ps1_dashes) [$(ps1_identity)] $(ps1_vcprompt)\$(ps1_ruby_version)[\D{%a, %b %d %T}]\n\$(ps1_dashes) $ "
+PS1="\n\$(ps1_dashes) [$(ps1_identity)] \$(ps1_vcprompt)\$(ps1_ruby_version)[\D{%a, %b %d %T}]\n\$(ps1_dashes) $ "
 PROMPT_COMMAND="ps1_update;$PROMPT_COMMAND"
 
 [[ -s "$HOME/.bash_profile_local" ]] && source "$HOME/.bash_profile_local"
