@@ -85,16 +85,16 @@ else
   [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 fi
 
-NONE="\[\033[0m\]"    # unsets color to term's fg color
+NONE="$(tput sgr0)"    # unsets color to term's fg color
 # regular colors
-K="\[\033[0;30m\]"    # black
-R="\[\033[0;31m\]"    # red
-G="\[\033[0;32m\]"    # green
-Y="\[\033[0;33m\]"    # yellow
-B="\[\033[0;34m\]"    # blue
-M="\[\033[0;35m\]"    # magenta
-C="\[\033[0;36m\]"    # cyan
-W="\[\033[0;37m\]"    # white
+K="$(tput setaf 0)"    # black
+R="$(tput setaf 1)"    # red
+G="$(tput setaf 2)"    # green
+Y="$(tput setaf 3)"    # yellow
+B="$(tput setaf 4)"    # blue
+M="$(tput setaf 5)"    # magenta
+C="$(tput setaf 6)"   # cyan
+W="$(tput setaf 7)"    # white
 
 ps1_vcprompt()
 {
@@ -122,13 +122,13 @@ ps1_vcprompt()
 ps1_ruby_version()
 {
   if command -v rvm-prompt &> /dev/null 2>&1 ; then
-    printf "%s" "$C[\$(rvm-prompt u p g s)]$NONE "
+    printf "%s" "$C[$(rvm-prompt u p g s)]$NONE "
   else
     if [ -n "$RUBY_ROOT" ]; then
-      printf "%s" "$C[\$(basename $RUBY_ROOT)]$NONE "
+      printf "%s" "$C[$(basename $RUBY_ROOT)]$NONE "
     elif quiet_which rbenv && rbenv version-name &>/dev/null; then
       if [ $(rbenv version-name) != "system" ]; then
-        printf "%s" "$C[ruby-\$(rbenv version-name)]$NONE "
+        printf "%s" "$C[ruby-$(rbenv version-name)]$NONE "
       fi
     fi
   fi
@@ -155,10 +155,10 @@ ps1_dashes()
 ps1_update()
 {
   export XIT=$?
-  PS1="\n$(ps1_dashes) [$(ps1_identity)] $(ps1_vcprompt)$(ps1_ruby_version)[\D{%a, %b %d %T}]\n$(ps1_dashes) $ "
 }
 
-PROMPT_COMMAND="ps1_update $@;$PROMPT_COMMAND"
+PS1="\n\$(ps1_dashes) [$(ps1_identity)] $(ps1_vcprompt)\$(ps1_ruby_version)[\D{%a, %b %d %T}]\n\$(ps1_dashes) $ "
+PROMPT_COMMAND="ps1_update;$PROMPT_COMMAND"
 
 [[ -s "$HOME/.bash_profile_local" ]] && source "$HOME/.bash_profile_local"
 [[ -s "$BASH_IT/bash_it.sh" ]] && source $BASH_IT/bash_it.sh
