@@ -146,10 +146,10 @@ ps1_identity()
 ps1_dashes()
 {
   if [[ $XIT -ne 0 ]] ; then
-    printf "%s" "$R"
+    printf "\001$R\002"
   fi
   printf "%s" "--"
-  printf "%s" "$NONE"
+  printf "\001$NONE\002"
 }
 
 ps1_update()
