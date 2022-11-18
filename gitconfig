@@ -1,6 +1,5 @@
-[user]
-  name = Kevin Glowacz
-  email = kevin@glowacz.info
+[include]
+  path = ~/.gitconfig_local
 [color]
   branch = auto
   diff = auto
@@ -45,8 +44,6 @@
   enabled = true
 [mergetool]
   keepBackup = true
-[commit]
-  gpgSign = true
 [pull]
   rebase = true
 [rebase]
