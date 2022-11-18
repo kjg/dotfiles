@@ -9,20 +9,9 @@
     "files.trimTrailingWhitespace": true,
     "ruby.intellisense": "rubyLocate",
     "ruby.codeCompletion": "rcodetools",
-    "terraform.indexing": {
-        "enabled": false,
-        "liveIndexing": false,
-        "delay": 500,
-        "exclude": [
-            ".terraform/**/*",
-            "**/.terraform/**/*"
-        ]
-    },
-    "terraform.languageServer": {
-        "external": true,
-        "args": [
-            "serve"
-        ]
+    "[terraform]": {
+        "editor.defaultFormatter": "hashicorp.terraform",
+        "editor.formatOnSave": true
     },
     "spellright.language": [
         "en"
@@ -47,5 +36,8 @@
     "workbench.preferredDarkColorTheme": "Monokai Dimmed",
     "workbench.colorTheme": "Monokai Dimmed",
     "terminal.integrated.scrollback": 100000,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "terraform.languageServer.enable": true,
+    "window.commandCenter": true
 }
